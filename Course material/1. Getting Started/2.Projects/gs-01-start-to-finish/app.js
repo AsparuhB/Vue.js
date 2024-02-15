@@ -1,3 +1,11 @@
+Vue.createApp({
+  data() {
+    return {
+      
+    }
+  }
+})
+
 // const addButtonEL = document.querySelector('button');
 // const listEl = document.querySelector('ul');
 // const inputEl = document.querySelector('input');
