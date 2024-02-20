@@ -30,7 +30,7 @@
       <p>Your Name: {{ confirmedName }}</p>
       <form v-on:submit.prevent>
         <input type="text" />
-        <button>Sign Up</button>
+        <button v-on:click="submitForm">Sign Up</button>
       </form>
     </section>
   </body>
