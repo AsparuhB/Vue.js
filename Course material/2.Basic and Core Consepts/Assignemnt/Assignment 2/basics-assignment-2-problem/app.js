@@ -1,12 +1,21 @@
 const app = Vue.createApp({
   data() {
-    return {};
+    return {
+      input: '',
+      confirmedInput: '',
+    };
   },
   methods: {
     showAlert() {
-      alert("Showing alert...")
+      alert('Showing alert...');
+    },
+    showInput(event) {
+      this.input = event.target.value;
+    },
+    showConfirmedInput() {
+      this.confirmedInput = this.input
     }
-  }
+  },
 });
 
 app.mount('#assignment');
