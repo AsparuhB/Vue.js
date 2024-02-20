@@ -13,8 +13,8 @@ const app = Vue.createApp({
       this.input = event.target.value;
     },
     showConfirmedInput() {
-      this.confirmedInput = this.input
-    }
+      this.confirmedInput = this.input;
+    },
   },
 });
 
