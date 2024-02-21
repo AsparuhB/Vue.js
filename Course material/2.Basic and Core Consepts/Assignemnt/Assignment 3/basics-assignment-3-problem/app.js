@@ -1,33 +1,32 @@
 const app = Vue.createApp({
   data() {
     return {
-      result: 0,
+      number: 0,
     };
   },
   computed: {
-    output() {
-      if (this.result < 37) {
+    result() {
+      if (this.number < 37) {
         return 'Not there yet';
-      } else if ((this.result === 37)) {
-        return this.result;
-      } else if (this.result > 37) {
+      } else if (this.number === 37) {
+        return this.number;
+      } else if (this.number > 37) {
         return 'Too much!';
       }
     },
   },
   methods: {
     addNumber(num) {
-      this.result += num;
+      this.number += num;
     },
   },
   watch: {
-    result(valueOld, valueNew) {
-      if (valueNew !== valueOld) {
-        const that = this;
-        setTimeout(function () {
-          that.result = 0;
-        }, 5000);
-      }
+    result() {
+      console.log("Watcher executing...")
+      const that = this;
+      setTimeout(function() {
+        that.number = 0;
+      }, 5000);
     },
   },
 });
