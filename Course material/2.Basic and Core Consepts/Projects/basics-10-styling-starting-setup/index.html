@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -22,8 +22,13 @@
         :style="{ borderColor: boxASelected ? 'red' : '#ccc'}"
         @click="boxSelected('A')"
       ></div>
-      <div class="demo" @click="boxSelected('B')"></div>
-      <div class="demo" @click="boxSelected('C')"></div>
+      <div
+        class="demo"
+        :style="{borderColor: boxBSelected ? 'magenta' : '#ccc'}"
+        @click="boxSelected('B')"
+      ></div>
+      <div class="demo" :style="{borderColor: boxCSelected ? 'cyan' : '#ccc'}"
+      @click="boxSelected('C')"></div>
     </section>
   </body>
 </html>
