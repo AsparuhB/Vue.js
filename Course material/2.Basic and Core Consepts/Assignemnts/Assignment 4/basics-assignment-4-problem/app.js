@@ -3,17 +3,26 @@ const app = Vue.createApp({
     return {
       isVisible: true,
       userInput: '',
-      user1: false,
-      user2: false,
+      inlineInput: '',
     };
   },
   computed: {
-    colorOutput() {
-      if (this.userInput === 'user1') {
-        this.user1 = true;
-      } else if (this.userInput === "user2") {
-        this.user2 = true
-      }
+    paraClasses() {
+      return {
+        user1: this.userInput === 'user1',
+        user2: this.userInput === 'user2',
+        visible: this.isVisible,
+        hidden: !this.isVisible
+      };
+    },
+  },
+  methods: {
+    buttonClicked() {
+      this.isVisible = !this.isVisible;
+    },
+    background(event) {
+      inlineInput = event.target.value;
+      return this.inlineInput;
     },
   },
 });
