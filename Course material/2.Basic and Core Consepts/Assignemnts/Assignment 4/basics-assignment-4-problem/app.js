@@ -1,30 +1,29 @@
-const app = Vue.createApp({
+Vue.createApp({
   data() {
     return {
-      isVisible: true,
       userInput: '',
-      inlineInput: '',
+      isVisible: true,
+      textInput: '',
     };
   },
   computed: {
-    paraClasses() {
+    diffClasses() {
       return {
         user1: this.userInput === 'user1',
         user2: this.userInput === 'user2',
         visible: this.isVisible,
-        hidden: !this.isVisible
+        hidden: !this.isVisible,
       };
     },
   },
   methods: {
-    buttonClicked() {
+    buttonToggle() {
       this.isVisible = !this.isVisible;
+      console.log(this.textInput);
     },
-    background(event) {
-      inlineInput = event.target.value;
-      return this.inlineInput;
-    },
+    // inlineStyle(event) {
+    //   this.textInput = event.target.value
+    //   return this.textInput
+    // }
   },
-});
-
-app.mount('#assignment');
+}).mount('#assignment');
