@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -20,24 +20,34 @@
       <section id="monster" class="container">
         <h2>Monster Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value"></div>
+          <div :style="monsterHealthBar" class="healthbar__value"></div>
         </div>
       </section>
       <section id="player" class="container">
         <h2>Your Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value"></div>
+          <div :style="playerHealthBar" class="healthbar__value"></div>
         </div>
       </section>
       <section id="controls">
-        <button>ATTACK</button>
-        <button>SPECIAL ATTACK</button>
-        <button>HEAL</button>
-        <button>SURRENDER</button>
+        <button @click="attackMonster" @click="attackPlayer">ATTACK</button>
+        <button @click="specialAttack">SPECIAL ATTACK</button>
+        <button @click="healPlayer">HEAL</button>
+        <button @click="surrender">SURRENDER</button>
       </section>
       <section id="log" class="container">
-        <h2>Battle Log</h2>
-        <ul></ul>
+        <h2 @click="showBattleLog">Battle Log</h2>
+        <ul v-if="showLog">
+          <li v-if="battleLog.length === 0">No logs yet.</li>
+          <li
+            :class="{ 'log--player': log.actionBy === 'Player', 'log--monster': log.actionBy === 'Monster', 'log--heal': log.actionType === 'heal'}"
+            :key="log.id"
+          
+            v-for="log in battleLog"
+          >
+            {{ log.actionBy }} {{log.actionType + " and deals"}} {{ log.actionValue }}
+          </li>
+        </ul>
       </section>
     </div>
   </body>
