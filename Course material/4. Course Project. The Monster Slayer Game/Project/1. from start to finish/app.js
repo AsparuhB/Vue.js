@@ -22,21 +22,30 @@ const app = Vue.createApp({
       const damage = Math.floor(Math.random() * 10);
       this.monsterHealth -= damage;
       this.addLog('Player', 'attacks', damage);
-      this.attackPlayer();
-      console.log(this.battleLog);
-      console.log(this.playerHealth);
     },
     attackPlayer() {
       const damage = Math.floor(Math.random() * 10);
       this.playerHealth -= damage;
       this.addLog('Monster', 'attacks', damage);
+      this.attackMonster();
     },
     specialAttack() {
-      const damage = Math.floor(Math.random() * 15);
-      this.monsterHealth -= damage;
-      this.addLog('Player', 'special attacks', damage);
+      if (this.hasSpecialAttack) {
+        const damage = Math.floor(Math.random() * 15);
+        this.monsterHealth -= damage;
+        this.addLog('Player', 'special attacks', damage);
+        this.attackPlayer();
+        this.hasSpecialAttack = false;
+      }
+    },
+    healPlayer() {
+      const heal = Math.floor(Math.random() * 10);
+      this.playerHealth += heal;
+      if (this.playerHealth > 100) {
+        this.playerHealth = 100;
+      }
+      this.addLog('Player', 'heals', heal);
       this.attackPlayer();
-      this.hasSpecialAttack = false;
     },
     addLog(who, what, value) {
       this.battleLog.unshift({
@@ -44,12 +53,6 @@ const app = Vue.createApp({
         actionType: what,
         actionValue: value,
       });
-    },
-    healPlayer() {
-      const heal = Math.floor(Math.random() * 10);
-      this.playerHealth += heal;
-      this.addLog('Player', 'heal', heal);
-      this.attackPlayer();
     },
 
     surrender() {

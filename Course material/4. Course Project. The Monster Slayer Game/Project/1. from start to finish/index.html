@@ -30,8 +30,10 @@
         </div>
       </section>
       <section id="controls">
-        <button @click="attackMonster" @click="attackPlayer">ATTACK</button>
-        <button @click="specialAttack">SPECIAL ATTACK</button>
+        <button @click="attackPlayer">ATTACK</button>
+        <button @click="specialAttack" :disabled="!hasSpecialAttack">
+          SPECIAL ATTACK
+        </button>
         <button @click="healPlayer">HEAL</button>
         <button @click="surrender">SURRENDER</button>
       </section>
@@ -40,12 +42,12 @@
         <ul v-if="showLog">
           <li v-if="battleLog.length === 0">No logs yet.</li>
           <li
-            :class="{ 'log--player': log.actionBy === 'Player', 'log--monster': log.actionBy === 'Monster', 'log--heal': log.actionType === 'heal'}"
+            :class="{ 'log--player': log.actionBy === 'Player', 'log--monster': log.actionBy === 'Monster', 'log--heal': log.actionType === 'heals'}"
             :key="log.id"
-          
             v-for="log in battleLog"
           >
-            {{ log.actionBy }} {{log.actionType + " and deals"}} {{ log.actionValue }}
+            {{ log.actionBy }} {{log.actionType + " and deals"}} {{
+            log.actionValue }}
           </li>
         </ul>
       </section>
