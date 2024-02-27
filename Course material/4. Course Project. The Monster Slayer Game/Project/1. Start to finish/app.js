@@ -5,6 +5,7 @@ function getRandomValue(min, max) {
 const app = Vue.createApp({
   data() {
     return {
+      // Defining the data needed for the game
       playerHealth: 100,
       monsterHealth: 100,
       currentRound: 0,
@@ -18,6 +19,7 @@ const app = Vue.createApp({
     };
   },
   computed: {
+    // monitoring and changing the player / monster health bars
     playerHealthBar() {
       if (this.playerHealth < 0) {
         return { width: '0%' };
@@ -35,6 +37,7 @@ const app = Vue.createApp({
     },
   },
   methods: {
+    // player attacking the monster functionality
     attackMonster() {
       this.currentRound++;
       const damage = getRandomValue(5, 12);
@@ -42,20 +45,23 @@ const app = Vue.createApp({
       this.addLogMessage('player', 'attack', damage);
       this.attackPlayer();
     },
+    // the monster attacking back functionality
     attackPlayer() {
       const damage = getRandomValue(8, 15);
       this.playerHealth -= damage;
       this.addLogMessage('monster', 'attack', damage);
     },
+    // adding a special attack functionality
     playerSpecialAttack() {
       this.currentRound++;
       if (this.currentRound % 3 !== 0) {
         const damage = getRandomValue(10, 25);
         this.monsterHealth -= damage;
-        this.addLogMessage('player', 'special-attack', damage);
+        this.addLogMessage('player', 'attack', damage);
         this.attackPlayer();
       }
     },
+    // adding healing functionality with a limited number of heals included
     playerHeal() {
       this.currentRound++;
       const healValue = getRandomValue(10, 30);
@@ -72,6 +78,7 @@ const app = Vue.createApp({
 
       this.attackPlayer();
     },
+    // adding a reset game functionality.
     gameReset() {
       this.playerHealth = 100;
       this.monsterHealth = 100;
@@ -82,9 +89,11 @@ const app = Vue.createApp({
       this.healCounter = 2;
       this.battleLog = [];
     },
+    // adding a surrender functionality.
     surrender() {
       this.winner = 'monster';
     },
+    // adding messages to the battle log.
     addLogMessage(who, what, value) {
       this.battleLog.unshift({
         actionBy: who,
@@ -93,6 +102,8 @@ const app = Vue.createApp({
       });
     },
   },
+  /* adding watchers to monitor the health and act accordingly with if statements 
+   so that we see if we won, lost or is a draw.*/
   watch: {
     playerHealth(value) {
       if (value <= 0 && this.monsterHealth <= 0) {
