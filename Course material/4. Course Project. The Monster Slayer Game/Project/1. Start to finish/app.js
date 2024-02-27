@@ -47,7 +47,7 @@ const app = Vue.createApp({
     },
     // the monster attacking back functionality
     attackPlayer() {
-      const damage = getRandomValue(8, 15);
+      const damage = getRandomValue(10, 20);
       this.playerHealth -= damage;
       this.addLogMessage('monster', 'attack', damage);
     },
@@ -55,7 +55,7 @@ const app = Vue.createApp({
     playerSpecialAttack() {
       this.currentRound++;
       if (this.currentRound % 3 !== 0) {
-        const damage = getRandomValue(10, 25);
+        const damage = getRandomValue(10, 30);
         this.monsterHealth -= damage;
         this.addLogMessage('player', 'attack', damage);
         this.attackPlayer();
