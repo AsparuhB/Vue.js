@@ -30,13 +30,7 @@
         </div>
       </section>
       <section class="container" v-if="winner">
-        <h2>
-          Game over! 
-          <p>Total damage dealt: <p>Player: <span class="log--player"
-            > {{ totalPlayerDamage }}</span</p>
-           <p>Monster: <span class="log--monster">{{ totalMonsterDamage }}</span></p></p>
-           <p>Total Player Heals: <span class="log--heal">{{ totalPlayerHeal }}</span></p>
-        </h2>
+        <h2>Game over!</h2>
         <h3 v-if="winner === 'monster'">You lost!</h3>
         <h3 v-else-if="winner === 'player'">You won!</h3>
         <h3 v-else>Its a draw!</h3>

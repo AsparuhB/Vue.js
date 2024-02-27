@@ -15,9 +15,6 @@ const app = Vue.createApp({
       gameOver: false,
       battleLog: [],
       showBattleLog: false,
-      totalPlayerDamage: 0,
-      totalMonsterDamage: 0,
-      totalPlayerHeal: 0,
     };
   },
   computed: {
@@ -42,14 +39,12 @@ const app = Vue.createApp({
       this.currentRound++;
       const damage = getRandomValue(5, 12);
       this.monsterHealth -= damage;
-      this.totalPlayerDamage += damage;
       this.addLogMessage('player', 'attack', damage);
       this.attackPlayer();
     },
     attackPlayer() {
       const damage = getRandomValue(8, 15);
       this.playerHealth -= damage;
-      this.totalMonsterDamage += damage;
       this.addLogMessage('monster', 'attack', damage);
     },
     playerSpecialAttack() {
@@ -57,9 +52,7 @@ const app = Vue.createApp({
       if (this.currentRound % 3 !== 0) {
         const damage = getRandomValue(10, 25);
         this.monsterHealth -= damage;
-        this.totalPlayerDamage += damage;
         this.addLogMessage('player', 'special-attack', damage);
-
         this.attackPlayer();
       }
     },
@@ -75,7 +68,6 @@ const app = Vue.createApp({
       if (this.healCounter === 0) {
         this.hasHeals = false;
       }
-      this.totalPlayerHeal += healValue;
       this.addLogMessage('player', 'heal', healValue);
 
       this.attackPlayer();
@@ -87,6 +79,7 @@ const app = Vue.createApp({
       this.currentRound = 0;
       this.hasHeals = true;
       this.winner = null;
+      this.healCounter = 2;
       this.battleLog = [];
     },
     surrender() {
