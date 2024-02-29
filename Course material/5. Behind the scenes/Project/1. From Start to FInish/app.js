@@ -47,7 +47,7 @@ app.mount('#app');
 setTimeout(function () {
   app.unmount();
   alert("Oh nooo! I knoooowww")
-}, 3000);
+}, 10000);
 
 const app2 = Vue.createApp({
   template: `
