@@ -24,11 +24,11 @@ export default {
     },
     phoneNumber: {
       type: String,
-      required: true
+      required: true,
     },
     emailAddress: {
       type: String,
-      required: true
+      required: true,
     },
     isFavorite: {
       type: Boolean,
@@ -42,18 +42,17 @@ export default {
   data() {
     return {
       detailsAreVisible: false,
-      friendIsFavorite: this.isFavorite
-    }
+      friendIsFavorite: this.isFavorite,
+    };
   },
   methods: {
     toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
-      this.phoneNumber
+      this.phoneNumber;
     },
     toggleFavorite() {
-      this.friendIsFavorite = !this.friendIsFavorite
-      }
-    }
-  }
-
+      this.friendIsFavorite = !this.friendIsFavorite;
+    },
+  },
+};
 </script>
