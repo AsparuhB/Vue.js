@@ -1,9 +1,13 @@
 <template>
-  <header><h1>My Friends</h1></header>
+  <header>
+    <h1>My Friends</h1>
+  </header>
   <section>
     <ul>
-      <friend-contact></friend-contact>
-      <friend-contact></friend-contact>
+      <friend-contact name="Teodor Georgiev" phone-number="08935454544"
+        email-address="teodor@localhost.com" is-favorite="1"></friend-contact>
+      <friend-contact name="Vitorio Pavlov" phone-number="08769202022"
+        email-address="vitorio@localhost.com" is-favorite="0"></friend-contact>
     </ul>
   </section>
 </template>
@@ -33,7 +37,6 @@ export default {
 </script>
 
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
 * {
