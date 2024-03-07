@@ -7,7 +7,7 @@
       <friend-contact name="Teodor Georgiev" phone-number="08935454544"
         email-address="teodor@localhost.com" is-favorite="1"></friend-contact>
       <friend-contact name="Vitorio Pavlov" phone-number="08769202022"
-        email-address="vitorio@localhost.com" is-favorite="0"></friend-contact>
+        email-address="vitorio@localhost.com"></friend-contact>
     </ul>
   </section>
 </template>
