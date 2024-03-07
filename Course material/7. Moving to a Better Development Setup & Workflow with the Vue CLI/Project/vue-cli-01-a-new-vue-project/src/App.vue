@@ -4,10 +4,8 @@
   </header>
   <section>
     <ul>
-      <friend-contact name="Teodor Georgiev" phone-number="08935454544"
-        email-address="teodor@localhost.com" is-favorite="1"></friend-contact>
-      <friend-contact name="Vitorio Pavlov" phone-number="08769202022"
-        email-address="vitorio@localhost.com"></friend-contact>
+      <friend-contact v-for="friend in friends" :key="friend.id" :name="friend.name" :phone-number="friend.phone"
+        :email-address="friend.email" :is-favorite='true'></friend-contact>
     </ul>
   </section>
 </template>
