@@ -14,7 +14,7 @@
     </div>
     <div>
       <label>Favorite:</label>
-      <input type="checkbox" v-model="checkedFavorite">
+      <input type="checkbox" v-model="checkedFavorite" />
     </div>
     <div>
       <button>Add Contact</button>
