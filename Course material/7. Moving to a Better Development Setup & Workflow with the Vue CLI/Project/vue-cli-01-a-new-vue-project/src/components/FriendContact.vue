@@ -62,7 +62,6 @@ export default {
   methods: {
     toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
-      this.phoneNumber;
     },
     toggleFavorite() {
       this.$emit('toggle-favorite', this.id);
