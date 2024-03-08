@@ -3,9 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
-    <new-friend @add-contact="addContact">
-
-    </new-friend>
+    <new-friend @add-contact="addContact"> </new-friend>
     <ul>
       <friend-contact
         v-for="friend in friends"
@@ -56,10 +54,10 @@ export default {
         name: name,
         phone: phone,
         email: email,
-        isFavorite: false
-      }
-      this.friends.push(newFriendContact)
-    }
+        isFavorite: false,
+      };
+      this.friends.push(newFriendContact);
+    },
   },
 };
 </script>
@@ -144,5 +142,4 @@ header {
 #app form div {
   margin: 1rem 0;
 }
-
 </style>
