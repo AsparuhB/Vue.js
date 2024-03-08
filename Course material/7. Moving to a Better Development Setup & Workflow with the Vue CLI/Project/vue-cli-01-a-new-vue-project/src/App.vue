@@ -48,13 +48,13 @@ export default {
       );
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
     },
-    addNewContact(name, phone, email) {
+    addNewContact(name, phone, email, checkedFavorite) {
       const newFriendContact = {
         id: new Date().toISOString(),
         name: name,
         phone: phone,
         email: email,
-        isFavorite: false,
+        isFavorite: checkedFavorite,
       };
       this.friends.push(newFriendContact);
     },

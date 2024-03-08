@@ -13,6 +13,10 @@
       <input type="email" v-model="enteredEmail" />
     </div>
     <div>
+      <label>Favorite:</label>
+      <input type="checkbox" v-model="checkedFavorite">
+    </div>
+    <div>
       <button>Add Contact</button>
     </div>
   </form>
@@ -26,6 +30,7 @@ export default {
       enteredName: '',
       enteredPhone: '',
       enteredEmail: '',
+      checkedFavorite: false,
     };
   },
   methods: {
@@ -34,7 +39,8 @@ export default {
         'add-contact',
         this.enteredName,
         this.enteredPhone,
-        this.enteredEmail
+        this.enteredEmail,
+        this.checkedFavorite
       );
     },
   },
