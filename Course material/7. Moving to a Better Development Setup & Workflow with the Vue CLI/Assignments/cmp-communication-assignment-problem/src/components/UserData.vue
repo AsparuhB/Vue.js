@@ -1,15 +1,18 @@
 <template>
-  <form @submit.prevent="submitData">
+  <section>
     <div>
-      <label>Username:</label>
-      <input type="text" v-model="enteredUserName" />
+      <form @submit.prevent="submitData">
+        <div>
+          <label>Username:</label>
+          <input type="text" v-model="enteredUserName" />
+        </div>
+        <div>
+          <label>Age:</label> <input type="text" v-model="enteredAge" />
+        </div>
+        <button>Add Username</button>
+      </form>
     </div>
-    <div>
-      <label>Age:</label>
-      <input type="text" v-model="enteredAge"/>
-    </div>
-    <button>Add Username</button>
-  </form>
+  </section>
 </template>
 
 <script>
@@ -23,12 +26,8 @@ export default {
   },
   methods: {
     submitData() {
-      this.$emit(
-        'add-user', 
-        this.enteredUserName,
-        this.enteredAge
-      )
-    }
-  }
+      this.$emit('add-user', this.enteredUserName, this.enteredAge);
+    },
+  },
 };
 </script>

@@ -110,7 +110,8 @@ header {
   max-width: 40rem;
 }
 
-#app h2 {
+#app h2,
+#app h3 {
   font-size: 2rem;
   border-bottom: 4px solid #ccc;
   color: #58004d;
