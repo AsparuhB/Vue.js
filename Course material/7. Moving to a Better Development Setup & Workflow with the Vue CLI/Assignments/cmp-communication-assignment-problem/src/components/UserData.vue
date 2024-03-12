@@ -9,7 +9,7 @@
         <div>
           <label>Age:</label> <input type="text" v-model="enteredAge" />
         </div>
-        <button>Add Username</button>
+        <button>Set User Data</button>
       </form>
     </div>
   </section>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  emits: ['add-user'],
+  emits: ['set-user'],
   data() {
     return {
       enteredUserName: '',
@@ -26,7 +26,8 @@ export default {
   },
   methods: {
     submitData() {
-      this.$emit('add-user', this.enteredUserName, this.enteredAge);
+      this.enteredAge = Number(this.enteredAge)
+      this.$emit('set-user', this.enteredUserName, this.enteredAge);
     },
   },
 };
