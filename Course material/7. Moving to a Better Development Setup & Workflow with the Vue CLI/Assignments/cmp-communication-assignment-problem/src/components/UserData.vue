@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     submitData() {
-      this.enteredAge = Number(this.enteredAge)
       this.$emit('set-user', this.enteredUserName, this.enteredAge);
     },
   },
