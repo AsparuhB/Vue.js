@@ -20,7 +20,7 @@ export default {
   methods: {
     settingUser(username, userAge) {
       this.users.name = username,
-      this.users.age = userAge
+      this.users.age = +userAge
     }
   },
 };
