@@ -1,20 +1,15 @@
 <template>
   <ul>
-    <ListItems v-for="recourse in storedRecourses" :key="recourse.id">
-      <template #heading> {{ recourse.title }}</template>
-      <template #desc> {{ recourse.description }}</template>
-      <template #link><a :href="recourse.link">{{ recourse.link }}</a></template>>
-    </ListItems>
 
   </ul>
 </template>
 
 <script>
-import ListItems from './components/ListItems.vue'
+import LearningResource from './components/LearningResource.vue'
 
 export default {
   components: {
-    ListItems,
+    LearningResource,
   },
   data() {
     return {
