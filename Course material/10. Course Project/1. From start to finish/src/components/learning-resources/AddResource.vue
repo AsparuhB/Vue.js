@@ -1,5 +1,9 @@
 <template>
-  <base-dialog v-if="inputIsInvalid" title="Invalid Input" @close="confirmError">
+  <base-dialog
+    v-if="inputIsInvalid"
+    title="Invalid Input"
+    @close="confirmError"
+  >
     <template #default>
       <p>Unfortunately, at least one input value is invalid.</p>
       <p>
@@ -7,7 +11,7 @@
         characters in the input fields
       </p>
     </template>
-    <template #actions> 
+    <template #actions>
       <base-button @click="confirmError">Okay</base-button>
     </template>
   </base-dialog>
@@ -47,13 +51,13 @@ export default {
   },
   methods: {
     submitData() {
-      const enteredTItle = this.$refs.title.value;
+      const enteredTitle = this.$refs.title.value;
       const enteredDescription = this.$refs.description.value;
       const enteredUrl = this.$refs.link.value;
 
       if (
-        enteredTItle.trim() === '' ||
-        enteredDescription.trim() ||
+        enteredTitle.trim() === '' ||
+        enteredDescription.trim() === '' ||
         enteredUrl.trim() === ''
       ) {
         this.inputIsInvalid = true;
@@ -61,11 +65,11 @@ export default {
         return;
       }
 
-      this.addResource(enteredTItle, enteredDescription, enteredUrl);
+      this.addResource(enteredTitle, enteredDescription, enteredUrl);
     },
     confirmError() {
       this.inputIsInvalid = false;
-    }
+    },
   },
 };
 </script>
