@@ -1,6 +1,6 @@
 <template>
   <base-card>
-    <form @submit.prevent="addNewResource">
+    <form @submit.prevent="submitData">
       <div class="form-control">
         <label for="title">Title</label>
         <input id="title" name="title" type="text" ref="title" />
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  inject: ['resources'],
+  inject: ['addResource'],
   data() {
     return {
       title: '',
@@ -31,16 +31,13 @@ export default {
     }
   },
   methods: {
-    addNewResource() {
-        const newUser = {
-          id: this.$refs.title.value,
-          title: this.$refs.title.value,
-          description: this.$refs.description.value,
-          link: this.$refs.link.value
-          
-        }
-        this.resources.push(newUser)
-      }
+    submitData() {
+      const enteredTItle = this.$refs.title.value
+      const enteredDescription = this.$refs.description.value
+      const enteredUrl = this.$refs.link.value
+
+      this.addResource(enteredTItle, enteredDescription, enteredUrl)
+    }
   }
 }
 </script>
