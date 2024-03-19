@@ -36,6 +36,12 @@ export default {
       const enteredDescription = this.$refs.description.value
       const enteredUrl = this.$refs.link.value
 
+      if (enteredTItle.trim() === '' || enteredDescription.trim() || enteredUrl.trim() === '') {
+        
+        
+        return;
+      }
+
       this.addResource(enteredTItle, enteredDescription, enteredUrl)
     }
   }
