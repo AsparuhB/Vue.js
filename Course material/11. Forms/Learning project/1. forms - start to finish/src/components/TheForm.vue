@@ -1,6 +1,9 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class="{invalid: userNameValidity === 'invalid'}">
+    <div
+      class="form-control"
+      :class="{ invalid: userNameValidity === 'invalid' }"
+    >
       <label for="user-name">Your Name</label>
       <input
         id="user-name"
@@ -117,52 +120,51 @@
 import RatingControl from './RatingControl.vue';
 
 export default {
-    data() {
-        return {
-            userName: '',
-            userAge: null,
-            referrer: 'wom',
-            interest: [],
-            how: null,
-            rating: null,
-            confirm: false,
-            userNameValidity: 'pending',
-        };
+  data() {
+    return {
+      userName: '',
+      userAge: null,
+      referrer: 'wom',
+      interest: [],
+      how: null,
+      rating: null,
+      confirm: false,
+      userNameValidity: 'pending',
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log('Username: ' + this.userName);
+      this.userName = '';
+      console.log('User age:');
+      console.log(this.userAge);
+      console.log(this.userAge + 1);
+      console.log(30);
+      this.userAge = null;
+      console.log(this.$refs.ageInput.value + 5);
+      console.log(+this.$refs.ageInput.value + 5);
+      console.log('Referrer: ' + this.referrer);
+      console.log('Checkboxes');
+      console.log(this.interest);
+      console.log('Radio buttons');
+      console.log(this.how);
+      (this.interest = []), (this.how = null);
+      console.log('Confirm ?');
+      console.log(this.confirm);
+      this.confirm = false;
+      console.log('Rating');
+      console.log(this.rating);
+      this.rating = null;
     },
-    methods: {
-        submitForm() {
-            console.log('Username: ' + this.userName);
-            this.userName = '';
-            console.log('User age:');
-            console.log(this.userAge);
-            console.log(this.userAge + 1);
-            console.log(30);
-            this.userAge = null;
-            console.log(this.$refs.ageInput.value + 5);
-            console.log(+this.$refs.ageInput.value + 5);
-            console.log('Referrer: ' + this.referrer);
-            console.log('Checkboxes');
-            console.log(this.interest);
-            console.log('Radio buttons');
-            console.log(this.how);
-            (this.interest = []), (this.how = null);
-            console.log('Confirm ?');
-            console.log(this.confirm);
-            this.confirm = false;
-            console.log("Rating");
-            console.log(this.rating);
-            this.rating = null
-        },
-        validateInput() {
-            if (this.userName === '') {
-                this.userNameValidity = 'invalid';
-            }
-            else {
-                this.userNameValidity = 'valid';
-            }
-        }
+    validateInput() {
+      if (this.userName === '') {
+        this.userNameValidity = 'invalid';
+      } else {
+        this.userNameValidity = 'valid';
+      }
     },
-    components: { RatingControl }
+  },
+  components: { RatingControl },
 };
 </script>
 
@@ -180,12 +182,12 @@ form {
   margin: 0.5rem 0;
 }
 
-.form-control.invalid input{
- border-color: red;
+.form-control.invalid input {
+  border-color: red;
 }
 
 .form-control.invalid label {
-  color: red
+  color: red;
 }
 label {
   font-weight: bold;
