@@ -9,7 +9,7 @@
         v-model.trim="userName"
         @blur="validateInput"
       />
-      <p v-if="userNameValidity === 'invalid'">Please enter a valid name</p>
+      <p v-if="userNameValidity === 'invalid'">Please enter a valid name !</p>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
