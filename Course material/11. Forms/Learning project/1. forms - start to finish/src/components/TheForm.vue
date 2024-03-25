@@ -96,6 +96,9 @@
       </div>
     </div>
     <div class="form-control">
+      <rating-control></rating-control>
+    </div>
+    <div class="form-control">
       <input
         type="checkbox"
         id="confirm-terms"
@@ -111,48 +114,51 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      userName: '',
-      userAge: null,
-      referrer: 'wom',
-      interest: [],
-      how: null,
-      confirm: false,
-      userNameValidity: 'pending',
-    };
-  },
-  methods: {
-    submitForm() {
-      console.log('Username: ' + this.userName);
-      this.userName = '';
-      console.log('User age:');
-      console.log(this.userAge);
-      console.log(this.userAge + 1);
-      console.log(30);
-      this.userAge = null;
-      console.log(this.$refs.ageInput.value + 5);
-      console.log(+this.$refs.ageInput.value + 5);
-      console.log('Referrer: ' + this.referrer);
-      console.log('Checkboxes');
-      console.log(this.interest);
-      console.log('Radio buttons');
-      console.log(this.how);
-      (this.interest = []), (this.how = null);
-      console.log('Confirm ?');
-      console.log(this.confirm);
-      this.confirm = false;
-    },
-    validateInput() {
-      if (this.userName === '') {
-        this.userNameValidity = 'invalid'
-      } else {
-        this.userNameValidity = 'valid'
-      }
-    }
+import RatingControl from './RatingControl.vue';
 
-  },
+export default {
+    data() {
+        return {
+            userName: '',
+            userAge: null,
+            referrer: 'wom',
+            interest: [],
+            how: null,
+            confirm: false,
+            userNameValidity: 'pending',
+        };
+    },
+    methods: {
+        submitForm() {
+            console.log('Username: ' + this.userName);
+            this.userName = '';
+            console.log('User age:');
+            console.log(this.userAge);
+            console.log(this.userAge + 1);
+            console.log(30);
+            this.userAge = null;
+            console.log(this.$refs.ageInput.value + 5);
+            console.log(+this.$refs.ageInput.value + 5);
+            console.log('Referrer: ' + this.referrer);
+            console.log('Checkboxes');
+            console.log(this.interest);
+            console.log('Radio buttons');
+            console.log(this.how);
+            (this.interest = []), (this.how = null);
+            console.log('Confirm ?');
+            console.log(this.confirm);
+            this.confirm = false;
+        },
+        validateInput() {
+            if (this.userName === '') {
+                this.userNameValidity = 'invalid';
+            }
+            else {
+                this.userNameValidity = 'valid';
+            }
+        }
+    },
+    components: { RatingControl }
 };
 </script>
 
