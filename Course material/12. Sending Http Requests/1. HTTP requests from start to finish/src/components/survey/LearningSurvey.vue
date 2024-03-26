@@ -50,6 +50,8 @@
 </template>
 
 <script>
+// import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -58,7 +60,7 @@ export default {
       invalidInput: false,
     };
   },
-  emits: ['survey-submit'],
+  // emits: ['survey-submit'],
   methods: {
     submitSurvey() {
       if (this.enteredName === '' || !this.chosenRating) {
@@ -67,11 +69,11 @@ export default {
       }
       this.invalidInput = false;
 
-      this.$emit('survey-submit', {
-        userName: this.enteredName,
-        rating: this.chosenRating,
-      });
-
+      // this.$emit('survey-submit', {
+      //   userName: this.enteredName,
+      //   rating: this.chosenRating,
+      // });
+        // post request with the fetch() API
       fetch(
         'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json',
         {
@@ -85,6 +87,11 @@ export default {
           }),
         }
       );
+        // POST request with Axios
+      // axios.post( 'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json', {
+      //     name: this.enteredName,
+      //     rating: this.chosenRating
+      //   })
 
       this.enteredName = '';
       this.chosenRating = null;
