@@ -51,8 +51,11 @@ export default {
               rating: data[id].rating,
             });
           }
-          this.results = results
+          this.results = results;
         });
+    },
+    mounted() {
+      this.loadExperiences();
     },
   },
 };
