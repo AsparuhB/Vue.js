@@ -41,6 +41,7 @@
         <p v-if="invalidInput">
           One or more input fields are invalid. Please check your provided data.
         </p>
+        <p v-if="error">{{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -50,7 +51,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios';
 
 export default {
   data() {
@@ -58,6 +59,7 @@ export default {
       enteredName: '',
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
   // emits: ['survey-submit'],
@@ -73,25 +75,46 @@ export default {
       //   userName: this.enteredName,
       //   rating: this.chosenRating,
       // });
-        // post request with the fetch() API
-      fetch(
-        'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
+
+      // post request with the fetch() API
+      this.error = null;
+      // fetch(
+      //   'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.jsn',
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       name: this.enteredName,
+      //       rating: this.chosenRating,
+      //     }),
+      //   }
+      // )
+      //   .then((response) => {
+      //     if (response.ok) {
+      //       ////
+      //     } else {
+      //       throw new Error('Could not save data!');
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     this.error = error.message;
+      //   });
+
+      // POST request with Axios
+      axios
+        .post(
+          'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json',
+          {
             name: this.enteredName,
             rating: this.chosenRating,
-          }),
-        }
-      );
-        // POST request with Axios
-      // axios.post( 'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json', {
-      //     name: this.enteredName,
-      //     rating: this.chosenRating
-      //   })
+          }
+        )
+        .catch((error) => {
+          this.error = error.message;
+        });
 
       this.enteredName = '';
       this.chosenRating = null;

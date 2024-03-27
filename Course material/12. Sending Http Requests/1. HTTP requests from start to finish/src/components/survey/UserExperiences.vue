@@ -26,6 +26,7 @@
 
 <script>
 import SurveyResult from './SurveyResult.vue';
+import axios from 'axios';
 
 export default {
   components: {
@@ -48,33 +49,58 @@ export default {
     loadExperiences() {
       this.isLoading = true;
       this.error = null;
-      // get request with fetch()
-      fetch(
-        'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
-      )
+      //// get request with fetch()
+      // fetch(
+      //   'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
+      // )
+      //   .then((response) => {
+      //     if (response.ok) {
+      //       return response.json();
+      //     }
+      //   })
+      //   .then((data) => {
+      //     setTimeout(() => {
+      //       this.isLoading = false;
+      //     }, 2000);
+      //     const results = [];
+      //     for (const id in data) {
+      //       results.push({
+      //         id: id,
+      //         name: data[id].name,
+      //         rating: data[id].rating,
+      //       });
+      //     }
+      //     this.results = results;
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     this.isLoading = false;
+      //     this.error = 'Failed to fetch data - please try again later.';
+      //   });
+
+      ////Get request with axios - might be better in the long run.
+      axios
+        .get(
+          'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.son'
+        )
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-        })
-        .then((data) => {
           setTimeout(() => {
             this.isLoading = false;
           }, 2000);
           const results = [];
-          for (const id in data) {
+          for (const id in response.data) {
             results.push({
               id: id,
-              name: data[id].name,
-              rating: data[id].rating,
+              name: response.data[id].name,
+              rating: response.data[id].rating,
             });
           }
           this.results = results;
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error.message);
           this.isLoading = false;
-          this.error = 'Failed to fetch data - please try again later.';
+          this.error = error.message;
         });
     },
   },
