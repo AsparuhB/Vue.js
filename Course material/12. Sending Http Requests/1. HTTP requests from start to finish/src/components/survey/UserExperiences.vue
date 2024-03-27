@@ -7,8 +7,11 @@
           >Load Submitted Experiences</base-button
         >
       </div>
-      <!-- <p v-if="isLoading">Loading...</p> -->
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <p v-else-if="!isLoading && (!results || results.length === 0)">
+        No stored experiences found. Start adding some survey results first!
+      </p>
+      <ul v-else-if="!isLoading && results && results.length > 0">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -27,21 +30,21 @@ export default {
   components: {
     SurveyResult,
   },
-  // adding another learning experience real time
+  // adding another learning experience real time - Not a good idea. Infinite loop
   // watch: {
   //   results() {
-      // this.loadExperiences();
+  // this.loadExperiences();
   //   },
   // },
   data() {
     return {
       results: [],
-      // isLoading: false,
+      isLoading: false,
     };
   },
   methods: {
     loadExperiences() {
-      // this.isLoading = true;
+      this.isLoading = true;
       // get request with fetch()
       fetch(
         'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
@@ -52,7 +55,9 @@ export default {
           }
         })
         .then((data) => {
-          // this.isLoading = false;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 2000);
           const results = [];
           for (const id in data) {
             results.push({
