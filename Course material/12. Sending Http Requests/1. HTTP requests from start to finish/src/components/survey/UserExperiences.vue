@@ -47,7 +47,7 @@ export default {
       this.isLoading = true;
       // get request with fetch()
       fetch(
-        'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
+        'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys'
       )
         .then((response) => {
           if (response.ok) {
@@ -67,6 +67,8 @@ export default {
             });
           }
           this.results = results;
+        }).catch((error) => {
+
         });
     },
   },
