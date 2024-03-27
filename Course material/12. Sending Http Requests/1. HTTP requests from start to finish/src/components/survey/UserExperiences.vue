@@ -81,18 +81,20 @@ export default {
       ////Get request with axios - might be better in the long run.
       axios
         .get(
-          'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.son'
+          'https://vue-httprequests-demo-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
         )
         .then((response) => {
           setTimeout(() => {
             this.isLoading = false;
           }, 2000);
+          const data = response.data
+          console.log(data);
           const results = [];
-          for (const id in response.data) {
+          for (const id in data) {
             results.push({
               id: id,
-              name: response.data[id].name,
-              rating: response.data[id].rating,
+              name: data[id].name,
+              rating: data[id].rating,
             });
           }
           this.results = results;
