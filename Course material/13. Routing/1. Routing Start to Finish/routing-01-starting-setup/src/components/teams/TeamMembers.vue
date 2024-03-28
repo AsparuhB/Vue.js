@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       teamName: '',
-      members: '',
+      members: [],
     };
   },
   created() {
