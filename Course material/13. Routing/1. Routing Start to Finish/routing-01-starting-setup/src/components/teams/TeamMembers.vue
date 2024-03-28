@@ -29,6 +29,7 @@ export default {
   created() {
     // this.$route.path // teams/t1
     const teamId = this.$route.params.teamId;
+    console.log(teamId);
     const selectedTeam = this.teams.find((team) => team.id === teamId);
     const members = selectedTeam.members;
     const selectedMembers = [];
