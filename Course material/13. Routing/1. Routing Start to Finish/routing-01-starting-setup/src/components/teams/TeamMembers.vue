@@ -47,6 +47,7 @@ export default {
     // this.$route.path // teams/t1
     this.loadTeamMembers(this.teamId);
     // console.log(this.$route);
+    console.log(this.$route.query, this.sort);
   },
   watch: {
     teamId(newId) {
