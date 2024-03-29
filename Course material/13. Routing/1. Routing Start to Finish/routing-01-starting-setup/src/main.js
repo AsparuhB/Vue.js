@@ -34,8 +34,22 @@ const router = createRouter({
     { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
-  linkExactActiveClass: 'exact',
+  // controlling the scrolling behavior. Yes no ? Yes.
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to);
+    console.log(from);
+    console.log(savedPosition);
+    if (savedPosition) {
+      return savedPosition
+    }
+    return {
+      top: 0,
+      left: 0,
+    };
+  },
 });
+
+// router.beforeEach()
 
 const app = createApp(App);
 
