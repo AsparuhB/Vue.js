@@ -1,4 +1,6 @@
 <template>
+  <router-view></router-view> <!-- This is added here, because the Teams List component has this as a child!
+  It will be responsible for all the child routes of the TeamsList component route. -->
   <ul>
     <teams-item
       v-for="team in teams"
@@ -8,8 +10,7 @@
       :member-count="team.members.length"
     ></teams-item>
   </ul>
-  <router-view></router-view> <!-- This is added here, because the Teams List component has this as a child!
-  It will be responsible for all the child routes of the TeamsList component route. -->
+  
 </template>
 
 <script>
