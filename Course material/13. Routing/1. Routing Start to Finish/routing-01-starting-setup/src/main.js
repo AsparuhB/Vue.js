@@ -30,17 +30,22 @@ const router = createRouter({
       name: 'users',
       path: '/users',
       components: { default: UsersList, footer: UsersFooter },
+      beforeEnter(to, from, next) {
+        console.log("users beforeEnter");
+        console.log(to, from);
+        next(true)
+      }
     }, // our-domain.com/users => UsersList
     { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
   // controlling the scrolling behavior. Yes no ? Yes.
-  scrollBehavior(to, from, savedPosition) {
-    console.log(to);
-    console.log(from);
-    console.log(savedPosition);
+  scrollBehavior(_, _2, savedPosition) {
+    // console.log(to);
+    // console.log(from);
+    // console.log(savedPosition);
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     }
     return {
       top: 0,
@@ -49,7 +54,22 @@ const router = createRouter({
   },
 });
 
-// router.beforeEach()
+// navigation guard
+router.beforeEach(function (to, from, next) {
+  console.log('Global beforeEach');
+  console.log(to, from);
+  // if (to.name === 'team-members') {
+  //   next();
+  // }
+  // next({ name: 'team-members', params: { teamId: 't2' } });
+  next();
+});
+
+router.afterEach(function(to, from) {
+  // sending analytics data
+  console.log('Global afterEach');
+  console.log(to, from)
+});
 
 const app = createApp(App);
 
