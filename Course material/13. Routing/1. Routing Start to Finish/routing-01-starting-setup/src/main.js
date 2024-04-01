@@ -2,13 +2,12 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
-import TeamsList from './components/teams/TeamsList.vue';
-import UsersList from './components/users/UsersList.vue';
+import TeamsList from './pages/TeamsList.vue';
+import UsersList from './pages/UsersList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
-import NotFound from './components/nav/NotFound.vue';
-import TeamsFooter from './components/teams/TeamsFooter.vue';
-import UsersFooter from './components/users/UsersFooter.vue';
-
+import NotFound from './pages/NotFound.vue';
+import TeamsFooter from './pages/TeamsFooter.vue';
+import UsersFooter from './pages/UsersFooter.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,6 +16,7 @@ const router = createRouter({
     {
       name: 'teams',
       path: '/teams',
+      meta: { needsAuth: true },
       components: { default: TeamsList, footer: TeamsFooter },
       children: [
         {
@@ -32,10 +32,10 @@ const router = createRouter({
       path: '/users',
       components: { default: UsersList, footer: UsersFooter },
       beforeEnter(to, from, next) {
-        console.log("users beforeEnter");
+        console.log('users beforeEnter');
         console.log(to, from);
-        next(true)
-      }
+        next(true);
+      },
     }, // our-domain.com/users => UsersList
     { path: '/:notFound(.*)', component: NotFound },
   ],
@@ -57,6 +57,10 @@ const router = createRouter({
 
 // navigation guard
 router.beforeEach(function (to, from, next) {
+  if (to.meta.needsAuth) {
+    console.log('Needs auth!');
+    next();
+  }
   console.log('Global beforeEach');
   console.log(to, from);
   // if (to.name === 'team-members') {
@@ -66,10 +70,10 @@ router.beforeEach(function (to, from, next) {
   next();
 });
 
-router.afterEach(function(to, from) {
+router.afterEach(function (to, from) {
   // sending analytics data
   console.log('Global afterEach');
-  console.log(to, from)
+  console.log(to, from);
 });
 
 const app = createApp(App);
