@@ -1,7 +1,8 @@
 <template>
   <the-navigation></the-navigation>
   <main>
-    <router-view></router-view> <!-- This is responsible for all the Root ROutes!-->
+    <router-view></router-view>
+    <!-- This is responsible for all the Root ROutes!-->
   </main>
   <footer>
     <router-view name="footer"></router-view>
