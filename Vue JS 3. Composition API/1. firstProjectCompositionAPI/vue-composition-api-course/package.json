@@ -1,5 +1,5 @@
 {
-  "name": "vue-composition-api-basics",
+  "name": "vue-composition-api-course",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.1.6",
-    "vite-plugin-vue-devtools": "^7.0.18"
+    "vite": "^5.1.6"
   }
 }
