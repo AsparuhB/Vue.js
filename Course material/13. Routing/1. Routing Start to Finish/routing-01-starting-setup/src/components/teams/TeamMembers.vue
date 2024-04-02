@@ -7,7 +7,7 @@
         :key="member.id"
         :name="member.fullName"
         :role="member.role"
-      ></user-item>
+        ></user-item>
     </ul>
     <router-link to="/teams/t2">Go to Team 2</router-link>
   </section>
