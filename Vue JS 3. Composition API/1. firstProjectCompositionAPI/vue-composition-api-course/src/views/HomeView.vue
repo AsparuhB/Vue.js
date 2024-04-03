@@ -21,7 +21,15 @@
 </template>
 
 <script setup>
-import { reactive, computed, watch } from 'vue';
+import {
+  reactive,
+  computed,
+  watch,
+  onMounted,
+  onUnmounted,
+  onBeforeMount,
+  onBeforeUnmount,
+} from 'vue';
 
 const appTitle = 'My Amazing Counter App';
 
@@ -30,11 +38,27 @@ const counterData = reactive({
   title: 'My Counter',
 });
 
-watch(() => counterData.count, (newCount) => {
-  if (newCount === 20) {
-    alert("Way to go! You made it to 20!!")
+watch(
+  () => counterData.count,
+  (newCount) => {
+    if (newCount === 20) {
+      alert('Way to go! You made it to 20!!');
+    }
   }
-})
+);
+
+onBeforeMount(() => {
+  console.log('OnBeforeUnmount');
+});
+onMounted(() => {
+  console.log('onMounted');
+});
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount');
+});
+onUnmounted(() => {
+  console.log('onUnmounted');
+});
 
 const oddOrEven = computed(() => {
   if (counterData.count % 2 === 0) return 'even';
@@ -69,3 +93,4 @@ const helloThere = computed(() => {
   margin-top: 60px;
 }
 </style>
+§
