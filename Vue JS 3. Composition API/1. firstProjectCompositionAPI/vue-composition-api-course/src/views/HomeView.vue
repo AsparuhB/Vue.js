@@ -21,19 +21,17 @@
 </template>
 
 <script setup>
-import {
-  reactive,
-  computed,
-  watch,
-  onMounted,
-  onUnmounted,
-  onBeforeMount,
-  onBeforeUnmount,
-  onActivated,
-  onDeactivated,
-} from 'vue';
+/* imports */
+import { reactive, computed, watch, onMounted } from 'vue';
+
+/* App title */
 
 const appTitle = 'My Amazing Counter App';
+onMounted(() => {
+  console.log('Do stuff related to App Title');
+});
+
+/* Counter logic */
 
 const counterData = reactive({
   count: 0,
@@ -49,25 +47,6 @@ watch(
   }
 );
 
-onBeforeMount(() => {
-  console.log('OnBeforeUnmount');
-});
-onMounted(() => {
-  console.log('onMounted');
-});
-onBeforeUnmount(() => {
-  console.log('onBeforeUnmount');
-});
-onUnmounted(() => {
-  console.log('onUnmounted');
-});
-onActivated(() => {
-  console.log('onActivated');
-});
-onDeactivated(() => {
-  console.log('onDeactivated');
-});
-
 const oddOrEven = computed(() => {
   if (counterData.count % 2 === 0) return 'even';
   return 'odd';
@@ -81,8 +60,8 @@ const decreaseCounter = (amount) => {
   counterData.count -= amount;
 };
 
-const helloThere = computed(() => {
-  if (counterData.count === 9) return 'Hello there';
+onMounted(() => {
+  console.log('Do stuff related to Counter');
 });
 </script>
 
