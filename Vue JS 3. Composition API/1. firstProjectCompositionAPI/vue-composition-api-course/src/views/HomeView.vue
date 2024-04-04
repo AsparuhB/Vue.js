@@ -15,7 +15,7 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text" />
+      <input v-model="counterData.title" type="text"  />
     </div>
   </div>
 </template>
@@ -30,11 +30,14 @@ const counterData = reactive({
   title: 'My Counter',
 });
 
-watch(() => counterData.count, (newCount) => {
-  if (newCount === 20) {
-    alert("Way to go! You made it to 20!!")
+watch(
+  () => counterData.count,
+  (newCount) => {
+    if (newCount === 20) {
+      alert('Way to go! You made it to 20!!');
+    }
   }
-})
+);
 
 const oddOrEven = computed(() => {
   if (counterData.count % 2 === 0) return 'even';
@@ -52,7 +55,51 @@ const decreaseCounter = (amount) => {
 const helloThere = computed(() => {
   if (counterData.count === 9) return 'Hello there';
 });
+
+/* 
+ Directives
+  */
+
+//  const 
 </script>
+
+<!--
+
+<script>
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  computed: {
+    myComputerProperty() {
+      //perform logic based on a data property
+      return 'my result';
+    },
+  },
+  watch: {
+    count(newCount, oldCount) {
+      if (newCount === 20) alert('asdsds');
+    },
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  unmounted() {
+    console.log('unmounted');
+  },
+  directives: {
+    autofocus: {
+      mounted(el) {
+        el.focus()
+      }
+    }
+  }
+};
+</script>
+
+-->
 
 <style>
 .home {
