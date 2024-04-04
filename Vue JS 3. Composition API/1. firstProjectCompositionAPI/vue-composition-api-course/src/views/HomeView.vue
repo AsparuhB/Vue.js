@@ -37,14 +37,17 @@ const counterData = reactive({
 });
 
 const vFocus = {
-  mounted: (el) => el.focus()
-}
+  mounted: (el) => el.focus(),
+};
 
-watch(() => counterData.count, (newCount) => {
-  if (newCount === 20) {
-    alert("Way to go! You made it to 20!!")
+watch(
+  () => counterData.count,
+  (newCount) => {
+    if (newCount === 20) {
+      alert('Way to go! You made it to 20!!');
+    }
   }
-})
+);
 
 const oddOrEven = computed(() => {
   if (counterData.count % 2 === 0) return 'even';
