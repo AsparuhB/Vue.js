@@ -15,13 +15,14 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" v-autofocus type="text"  />
+      <input v-model="counterData.title" v-autofocus type="text" />
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, computed, watch } from 'vue';
+import { vAutofocus } from '../directives/vAutofocus.js'// importing a global directive
 
 const appTitle = 'My Amazing Counter App';
 
@@ -55,16 +56,6 @@ const decreaseCounter = (amount) => {
 const helloThere = computed(() => {
   if (counterData.count === 9) return 'Hello there';
 });
-
-/* 
- Directives
-  */
-
- const vAutofocus = {
-  mounted: (el) => {
-    el.focus()
-  }
- }
 
 </script>
 
