@@ -15,20 +15,30 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text" />
+      <input v-model="counterData.title" v-focus type="text" />
     </div>
   </div>
 </template>
 
 <script setup>
+/* Imports */
+
 import { reactive, computed, watch } from 'vue';
 
+/* Title */
+
 const appTitle = 'My Amazing Counter App';
+
+/* Counter */
 
 const counterData = reactive({
   count: 0,
   title: 'My Counter',
 });
+
+const vFocus = {
+  mounted: (el) => el.focus()
+}
 
 watch(() => counterData.count, (newCount) => {
   if (newCount === 20) {
