@@ -3,7 +3,10 @@
     <h1>Modals</h1>
     <button @click="showModal = true">Show Modal</button>
     <teleport to=".modals-container">
-      <Modal v-if="showModal" title="My modal title (via prop)">
+      <Modal
+        v-if="showModal"
+        @hideModal="showModal = false"
+        title="My modal title (via prop)">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
           vero rerum voluptate provident dolor voluptates sunt doloribus, quod,
