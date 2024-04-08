@@ -2,7 +2,7 @@
   <div class="modals">
     <h1>Modals</h1>
     <button @click="showModal = true">Show Modal</button>
-    <teleport to=".modals-container">
+    <!-- <teleport to=".modals-container"> -->
           <div v-if="showModal" class="modal">
       <h1>This is a modal</h1>
       <p>
@@ -13,7 +13,7 @@
       </p>
       <button @click="showModal = false">Hide modal</button>
     </div>
-    </teleport>
+    <!-- </teleport> -->
 
   </div>
 </template>
