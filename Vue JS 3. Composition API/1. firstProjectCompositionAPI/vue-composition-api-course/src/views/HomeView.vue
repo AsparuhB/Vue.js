@@ -62,11 +62,11 @@ const oddOrEven = computed(() => {
   return 'odd';
 });
 
-const increaseCounter = async(amount, event) => {
+const increaseCounter = async (amount, event) => {
   counterData.count += amount;
   await nextTick(() => {
-    console.log("do something when the counter has updated in the dom");
-  })
+    console.log('do something when the counter has updated in the dom');
+  });
 };
 
 const decreaseCounter = (amount) => {
