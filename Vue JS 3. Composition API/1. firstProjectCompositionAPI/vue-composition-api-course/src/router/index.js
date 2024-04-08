@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+// importing the components like this as opposed to component: () => import('../views/PostsView.vue') means that they are loaded immediately, when the page is loads.
 import ModalsView from '../views/ModalsView.vue';
 import PostsView from '../views/PostsView.vue';
 import PostDetailView from '../views/PostDetailView.vue';
