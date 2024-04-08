@@ -21,10 +21,20 @@
 </template>
 
 <script setup>
+/* 
+imports
+*/
 import { reactive, computed, watch } from 'vue';
-import { vAutofocus } from '../directives/vAutofocus.js'// importing a global directive
+import { vAutofocus } from '../directives/vAutofocus.js'; // importing a global directive
 
+/* 
+App title
+*/
 const appTitle = 'My Amazing Counter App';
+
+/* 
+ counter 
+ */
 
 const counterData = reactive({
   count: 0,
@@ -56,7 +66,6 @@ const decreaseCounter = (amount) => {
 const helloThere = computed(() => {
   if (counterData.count === 9) return 'Hello there';
 });
-
 </script>
 
 <!--
