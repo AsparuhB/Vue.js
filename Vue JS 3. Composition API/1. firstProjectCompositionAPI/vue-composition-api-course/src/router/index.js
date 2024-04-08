@@ -17,13 +17,13 @@ const router = createRouter({
       path: '/posts',
       name: 'posts',
       // component: () => import('../views/PostsView.vue') // Lazy loading of the imports
-      component: ModalsView,
+      component: PostsView,
     },
     {
       path: '/modals',
       name: 'modals',
       // component: () => import('../views/ModalsView.vue') // Lazy loading of the imports
-      component: PostsView,
+      component: ModalsView,
     },
     {
       path: '/postDetail/:id',
