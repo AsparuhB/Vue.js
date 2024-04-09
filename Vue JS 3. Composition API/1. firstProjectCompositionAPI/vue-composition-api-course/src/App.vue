@@ -1,9 +1,5 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router';
-// import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
+  <div class="user-data">{{ userData.name }} @{{ userData.username }}</div>
   <nav>
     <RouterLink to="/home">Home</RouterLink>
     <RouterLink to="/posts">Posts </RouterLink>
@@ -12,6 +8,21 @@ import { RouterLink, RouterView } from 'vue-router';
 
   <RouterView />
 </template>
+
+<script setup>
+// imports
+
+import { reactive, provide } from 'vue';
+
+// user data
+
+const userData = reactive({
+  name: 'Alex',
+  username: 'alexBamboff',
+});
+
+provide('userData', userData)
+</script>
 
 <style scoped>
 header {
@@ -47,5 +58,15 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.user-data {
+  position: absolute;
+  color: black;
+  background: beige;
+  top: 0;
+  right: 0;
+  font-size: 18px;
+  padding: 5px;
 }
 </style>

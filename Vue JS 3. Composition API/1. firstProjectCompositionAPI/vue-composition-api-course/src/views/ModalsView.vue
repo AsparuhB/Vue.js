@@ -9,7 +9,7 @@
     <button @click="showModal = true">Show Modal</button>
     <teleport to=".modals-container">
       <component
-        :is="showDarkModals ? ModalD ark : Modal"
+        :is="showDarkModals ? ModalDark : Modal"
         v-model="showModal"
         title="My modal title (via prop)">
         <p>
@@ -31,6 +31,8 @@ imports
 import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 import ModalDark from '@/components/ModalDark.vue';
+
+
 
 /* 
   modals
