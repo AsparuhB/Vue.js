@@ -11,7 +11,6 @@
     </div>
 
     <p>This counter is {{ oddOrEven }}</p>
-    <p>{{ helloThere }}.</p>
 
     <div class="edit">
       <h4>Edit counter title:</h4>
@@ -24,7 +23,9 @@
 /* 
 imports
 */
-import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue';
+
+import { ref, onMounted } from 'vue';
+import { useCounter } from '@/use/useCounter';
 import { vAutofocus } from '../directives/vAutofocus.js'; // importing a global directive
 
 /* 
@@ -39,43 +40,13 @@ onMounted(() => {
   console.log(appTitleRef.value);
   console.dir(appTitleRef.value);
 });
+
 /* 
  counter 
  */
 
-const counterData = reactive({
-  count: 0,
-  title: 'My Counter',
-});
+const { oddOrEven, counterData, increaseCounter, decreaseCounter } = useCounter();
 
-watch(
-  () => counterData.count,
-  (newCount) => {
-    if (newCount === 20) {
-      alert('Way to go! You made it to 20!!');
-    }
-  }
-);
-
-const oddOrEven = computed(() => {
-  if (counterData.count % 2 === 0) return 'even';
-  return 'odd';
-});
-
-const increaseCounter = async (amount, event) => {
-  counterData.count += amount;
-  await nextTick(() => {
-    console.log('do something when the counter has updated in the dom');
-  });
-};
-
-const decreaseCounter = (amount) => {
-  counterData.count -= amount;
-};
-
-const helloThere = computed(() => {
-  if (counterData.count === 9) return 'Hello there';
-});
 </script>
 
 <!--
