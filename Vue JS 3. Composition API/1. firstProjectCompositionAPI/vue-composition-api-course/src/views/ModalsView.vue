@@ -4,7 +4,7 @@
     <button @click="showModal = true">Show Modal</button>
     <teleport to=".modals-container">
       <Modal
-        v-if="showModal"
+        v-model="showModal"
         @hideModal="showModal = false"
         title="My modal title (via prop)">
         <p>
