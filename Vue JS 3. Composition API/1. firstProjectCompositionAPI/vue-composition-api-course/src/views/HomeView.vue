@@ -5,7 +5,7 @@
     <div>
       <button class="btn">--</button>
       <button  class="btn">-</button>
-      <span class="counter">0</span>
+      <span class="counter">{{counter.count}}</span>
       <button  class="btn">+</button>
       <button  class="btn">++</button>
     </div>
