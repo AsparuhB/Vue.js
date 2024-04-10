@@ -1,13 +1,12 @@
-import {  reactive, computed, watch, onMounted, nextTick } from 'vue';
+import { reactive, computed, watch, onMounted, nextTick } from 'vue';
+
+const counterData = reactive({
+  count: 0,
+  title: 'My Counter',
+});
 
 export function useCounter() {
-
-
   // new counter app code.
-  const counterData = reactive({
-    count: 0,
-    title: 'My Counter',
-  });
 
   watch(
     () => counterData.count,
@@ -38,6 +37,6 @@ export function useCounter() {
     counterData,
     oddOrEven,
     increaseCounter,
-    decreaseCounter
-  }
+    decreaseCounter,
+  };
 }
