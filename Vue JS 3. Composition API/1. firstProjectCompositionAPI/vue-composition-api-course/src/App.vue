@@ -1,16 +1,38 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router';
-// import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
+  <div class="user-data">
+    {{ userData.name }} @{{ userData.username }}
+    || Network status:
+    <span :style="{ color: online ? 'green' : 'red' }">{{
+      online ? 'Online' : 'Offline'
+    }}</span>
+  </div>
   <nav>
     <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
+    <RouterLink to="/posts">Posts </RouterLink>
+    <RouterLink to="/modals">Modals </RouterLink>
   </nav>
 
   <RouterView />
 </template>
+
+<script setup>
+// imports
+
+import { reactive, provide } from 'vue';
+import { useOnline } from '@vueuse/core';
+
+// user data
+
+const userData = reactive({
+  name: 'Alex',
+  username: 'alexBamboff',
+});
+
+provide('userData', userData);
+
+// online status
+const online = useOnline();
+</script>
 
 <style scoped>
 header {
@@ -46,5 +68,15 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.user-data {
+  position: absolute;
+  color: black;
+  background: beige;
+  top: 0;
+  right: 0;
+  font-size: 18px;
+  padding: 5px;
 }
 </style>
