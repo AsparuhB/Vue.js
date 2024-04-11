@@ -6,10 +6,10 @@
 </template>
 
 <script setup>
-/* 
-Imports
+/*
+  imports
 */
 
-import { vAutofocus } from '../directives/vAutofocus.js'// importing a global directive
+  import { vAutofocus } from '@/directives/vAutofocus'
 
 </script>

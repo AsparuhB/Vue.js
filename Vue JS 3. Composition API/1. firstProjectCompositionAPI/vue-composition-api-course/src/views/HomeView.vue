@@ -15,16 +15,21 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text" />
+      <input v-model="counterData.title" v-autofocus type="text" />
     </div>
   </div>
 </template>
 
 <script setup>
+<<<<<<< HEAD
 /* imports */
 import { reactive, computed, watch, onMounted } from 'vue';
 
 /* App title */
+=======
+import { reactive, computed, watch } from 'vue';
+import { vAutofocus } from '../directives/vAutofocus.js'// importing a global directive
+>>>>>>> 7.-Directives
 
 const appTitle = 'My Amazing Counter App';
 onMounted(() => {
@@ -63,7 +68,46 @@ const decreaseCounter = (amount) => {
 onMounted(() => {
   console.log('Do stuff related to Counter');
 });
+
 </script>
+
+<!--
+
+<script>
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  computed: {
+    myComputerProperty() {
+      //perform logic based on a data property
+      return 'my result';
+    },
+  },
+  watch: {
+    count(newCount, oldCount) {
+      if (newCount === 20) alert('asdsds');
+    },
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  unmounted() {
+    console.log('unmounted');
+  },
+  directives: {
+    autofocus: {
+      mounted(el) {
+        el.focus()
+      }
+    }
+  }
+};
+</script>
+
+-->
 
 <style>
 .home {
