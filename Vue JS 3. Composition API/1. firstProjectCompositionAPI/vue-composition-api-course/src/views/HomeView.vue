@@ -21,6 +21,7 @@
 
 <script setup>
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Imports */
 
 import { ref, reactive, computed, watch } from 'vue';
@@ -28,16 +29,28 @@ import { ref, reactive, computed, watch } from 'vue';
 /* Title */
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 6.-Lifecycle-Hooks
 /* 
 imports
 */
 =======
+>>>>>>> 12.-State-management-with-Pinia
 /* imports */
 import { reactive, computed, watch, onMounted } from 'vue';
 >>>>>>> 12.-State-management-with-Pinia
 
 /* App title */
+<<<<<<< HEAD
+=======
+import { reactive, computed, watch } from 'vue';
+import { vAutofocus } from '../directives/vAutofocus.js'// importing a global directive
+>>>>>>> 7.-Directives
+=======
 >>>>>>> 6.-Lifecycle-Hooks
+>>>>>>> 12.-State-management-with-Pinia
 
 import { ref, onMounted } from 'vue';
 import { useCounterStore } from '@/stores/counter';
