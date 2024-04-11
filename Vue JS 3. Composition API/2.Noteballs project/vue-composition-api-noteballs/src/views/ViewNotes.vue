@@ -30,3 +30,11 @@
     </div>
   </div>
 </template>
+
+<script setup>
+//imports
+import { ref } from 'vue';
+//notes
+
+const notes = ref()
+</script>
