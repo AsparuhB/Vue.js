@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar is-success" role="navigation" aria-label="main navigation">
-    <div class="container is-max-desktop">
+    <div class="container is-max-desktop px-2">
       <div class="navbar-brand">
         <div class="navbar-item is-size-4 is-family-monospace">NoteBalls</div>
 
@@ -22,7 +22,6 @@
       <div
         id="navbarBasicExample"
         class="navbar-menu"
-        @click="showMobileNav = !showMobileNav"
         :class="{ 'is-active': showMobileNav }">
         <div class="navbar-end">
           <RouterLink to="/" class="navbar-item" active-class="is-active">
