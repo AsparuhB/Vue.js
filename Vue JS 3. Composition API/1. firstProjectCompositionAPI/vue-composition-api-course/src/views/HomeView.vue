@@ -20,9 +20,16 @@
 </template>
 
 <script setup>
+<<<<<<< HEAD
 /* 
 imports
 */
+=======
+/* imports */
+import { reactive, computed, watch, onMounted } from 'vue';
+
+/* App title */
+>>>>>>> 6.-Lifecycle-Hooks
 
 import { ref, onMounted } from 'vue';
 import { useCounterStore } from '@/stores/counter';
@@ -32,6 +39,11 @@ import { vAutofocus } from '../directives/vAutofocus.js'; // importing a global 
 App title
 */
 const appTitle = 'My Amazing Counter App';
+onMounted(() => {
+  console.log('Do stuff related to App Title');
+});
+
+/* Counter logic */
 
 const appTitleRef = ref(null);
 
@@ -41,9 +53,37 @@ onMounted(() => {
   console.dir(appTitleRef.value);
 });
 
+<<<<<<< HEAD
 // Counter
 
 const counter = useCounterStore();
+=======
+watch(
+  () => counterData.count,
+  (newCount) => {
+    if (newCount === 20) {
+      alert('Way to go! You made it to 20!!');
+    }
+  }
+);
+
+const oddOrEven = computed(() => {
+  if (counterData.count % 2 === 0) return 'even';
+  return 'odd';
+});
+
+const increaseCounter = (amount, event) => {
+  counterData.count += amount;
+};
+
+const decreaseCounter = (amount) => {
+  counterData.count -= amount;
+};
+
+onMounted(() => {
+  console.log('Do stuff related to Counter');
+});
+>>>>>>> 6.-Lifecycle-Hooks
 </script>
 
 <!--
@@ -99,3 +139,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+§
