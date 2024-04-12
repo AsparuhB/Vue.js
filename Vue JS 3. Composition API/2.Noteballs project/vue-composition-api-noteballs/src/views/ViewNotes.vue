@@ -6,7 +6,8 @@
           <textarea
             v-model="newNote"
             class="textarea"
-            placeholder="Add a new note" />
+            placeholder="Add a new note"
+            ref="newNoteRef" />
         </div>
       </div>
 
@@ -21,25 +22,18 @@
         </div>
       </div>
     </div>
-
-    <div class="card mb-4" v-for="note in notes" :key="note.id">
-      <div class="card-content">
-        {{ note.content }}
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
-      </footer>
-    </div>
+    <Note v-for="note in notes" :key="note.id" :note="note" />
   </div>
 </template>
 
 <script setup>
 //imports
 import { ref } from 'vue';
+import Note from '@/components/Notes/Note.vue';
 //notes
 
 const newNote = ref('');
+const newNoteRef = ref(null);
 
 const notes = ref([
   {
@@ -58,7 +52,9 @@ const addNewNote = () => {
     id: new Date().toISOString(),
     content: newNote.value,
   };
-  notes.value.push(note);
-  newNote.value = ''
+  notes.value.unshift(note);
+  newNote.value = '';
+
+  newNoteRef.value.focus();
 };
 </script>
