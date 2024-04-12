@@ -1,9 +1,9 @@
 // stores/counter.js
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
-    return { 
+    return {
       notes: [
         {
           id: 'id1',
@@ -14,7 +14,21 @@ export const useStoreNotes = defineStore('storeNotes', {
           id: 'id2',
           content: 'This is a shorter note! Woo!',
         },
-      ]
-    }
+      ],
+    };
   },
-})
+  actions: {
+    addNote(newNoteContent) {
+      const note = {
+        id: new Date().toISOString(),
+        content: newNoteContent,
+      };
+      this.notes.unshift(note);
+    },
+    deleteNote(idToDelete) {
+      this.notes = this.notes.filter((note) => {
+        return note.id !== idToDelete;
+      });
+    },
+  },
+});
