@@ -1,6 +1,8 @@
 <template>
   <div class="notes">
-    <div class="card has-background-success-dark p-4 mb-5">
+
+    <!-- This component will be created as a reusable-->
+    <!-- <div class="card has-background-success-dark p-4 mb-5">
       <div class="field">
         <div class="control">
           <textarea
@@ -22,8 +24,9 @@
         </div>
       </div>
     </div>
-    <Note v-for="note in storeNotes.notes" :key="note.id" :note="note" />
-  </div>
+  </div> -->
+
+  <Note v-for="note in storeNotes.notes" :key="note.id" :note="note" />
 </template>
 
 <script setup>
@@ -31,6 +34,7 @@
 import { ref } from 'vue';
 import Note from '@/components/Notes/Note.vue';
 import { useStoreNotes } from '@/stores/storeNotes';
+import AddEditNote from '@/components/Notes/AddEditNote.vue';
 
 // store //
 
