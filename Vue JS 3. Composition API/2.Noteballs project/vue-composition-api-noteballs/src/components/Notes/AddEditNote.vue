@@ -5,8 +5,8 @@
         <textarea
           v-model="noteModel"
           class="textarea"
-          placeholder="Add a new note"
-          ref="newNoteRef" />
+          placeholder="Add a new note" 
+          ref="textareaRef"/>
       </div>
     </div>
 
@@ -16,12 +16,26 @@
       </div>
     </div>
   </div>
-
-  <pre> {{ noteModel }}</pre>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+// imports 
+
+const textareaRef = ref(null)
+
 // props
 
 const noteModel = defineModel();
+
+//focus 
+
+const focusTextArea = () => {
+textareaRef.value.focus()
+}
+
+defineExpose({
+  focusTextArea
+})
 </script>
