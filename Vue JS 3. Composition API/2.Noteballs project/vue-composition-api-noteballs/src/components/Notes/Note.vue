@@ -7,7 +7,9 @@
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Edit</a>
+      <RouterLink href="#" :to="`/editNote/${note.id}`" class="card-footer-item"
+        >Edit</RouterLink
+      >
       <a
         href="#"
         class="card-footer-item"
@@ -36,8 +38,6 @@ const props = defineProps({
   },
 });
 
-//Emits
-const emit = defineEmits(['deleteClicked']);
 
 //character length computed
 

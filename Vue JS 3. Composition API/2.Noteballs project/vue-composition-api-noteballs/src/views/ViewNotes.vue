@@ -1,6 +1,15 @@
 <template>
   <div class="notes">
-
+    <AddEditNote v-model="newNote" >
+      <template #buttons> 
+        <button
+            @click="addNewNote"
+            :disabled="!newNote"
+            class="button is-link has-background-success">
+            Add New Note
+          </button>
+      </template>
+    </AddEditNote>
     <!-- This component will be created as a reusable-->
     <!-- <div class="card has-background-success-dark p-4 mb-5">
       <div class="field">
@@ -25,7 +34,7 @@
       </div>
     </div>
   </div> -->
-
+  </div>
   <Note v-for="note in storeNotes.notes" :key="note.id" :note="note" />
 </template>
 
@@ -49,6 +58,6 @@ const addNewNote = () => {
   storeNotes.addNote(newNote.value);
 
   newNote.value = '';
-  newNoteRef.value.focus();
+  // newNoteRef.value.focus();
 };
 </script>
