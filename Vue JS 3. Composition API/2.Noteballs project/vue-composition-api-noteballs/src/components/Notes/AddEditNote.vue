@@ -25,7 +25,7 @@ import { ref } from 'vue';
 
 const textareaRef = ref(null)
 
-// props
+// defineModel() -> This substitutes defineProps() and defineEmits()
 
 const noteModel = defineModel();
 
