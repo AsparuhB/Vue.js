@@ -3,7 +3,7 @@
     <div class="field">
       <div class="control">
         <textarea
-          v-model="noteModel"
+          v-model.trim="noteModel"
           class="textarea"
           placeholder="Add a new note" 
           ref="textareaRef"/>
@@ -19,9 +19,11 @@
 </template>
 
 <script setup>
+// imports 
+
 import { ref } from 'vue';
 
-// imports 
+// refs
 
 const textareaRef = ref(null)
 
@@ -29,7 +31,7 @@ const textareaRef = ref(null)
 
 const noteModel = defineModel();
 
-//focus 
+//focus textarea
 
 const focusTextArea = () => {
 textareaRef.value.focus()
