@@ -1,8 +1,16 @@
 <template>
   <div class="notes">
-    <AddEditNote v-model="noteContent" ref="addEditNoteRef">
+    <AddEditNote
+      label="Edit Note"
+      v-model="noteContent"
+      ref="addEditNoteRef"
+      bgColor="link"
+      placeholder="Edit Note">
       <template #buttons>
-        <button class="button is-link has-background-success">
+        <button @click="$router.push('/')" class="button is-link is-light">Cancel</button>
+        <button
+          class="button is-link has-background-link"
+          :disabled="!noteContent">
           Save Note
         </button>
       </template>
@@ -12,12 +20,10 @@
 
 <script setup>
 // imports
-import { ref } from "vue";
+import { ref } from 'vue';
 import AddEditNote from '@/components/Notes/AddEditNote.vue';
-
 
 //note
 
-const noteContent = ref('')
-
+const noteContent = ref('');
 </script>
