@@ -30,7 +30,7 @@ const textareaRef = ref(null);
 
 // defineModel() -> This substitutes defineProps() and defineEmits
 
-const noteModel = defineModel();
+const noteModel = defineModel({type: String});
 
 // props
 
