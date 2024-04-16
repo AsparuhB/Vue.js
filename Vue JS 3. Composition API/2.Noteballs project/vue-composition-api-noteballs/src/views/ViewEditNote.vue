@@ -42,11 +42,13 @@ const storeNotes = useStoreNotes();
 const noteContent = ref('');
 
 noteContent.value = storeNotes.getNoteContent(route.params.id);
+console.log(route.params);
 
 // save clicked.
 
 const handleSaveClicked = () => {
   storeNotes.updateNote(route.params.id, noteContent.value);
+  console.log(router)
   router.push('/');
 };
 </script>
