@@ -10,20 +10,22 @@
       <tbody>
         <tr>
           <td>Number of Notes</td>
-          <td>{{storeNotes.totalNotesCount}}</td>
+          <td>{{ storeNotes.totalNotesCount }}</td>
         </tr>
         <tr>
           <td>Number of Character (of all notes)</td>
-          <td>{{storeNotes.totalCharactersCount}}</td>
+          <td>{{ storeNotes.totalCharactersCount }}</td>
         </tr>
       </tbody>
     </table>
+    <input v-autofocus class="input" type="text" placeholder="Do you love noteballs? Yes, no ? Yes." />
   </div>
 </template>
 
 <script setup>
 //imports
 
+import { vAutofocus } from '@/directives/vAutofocus'
 import { useStoreNotes } from '@/stores/storeNotes';
 
 // store

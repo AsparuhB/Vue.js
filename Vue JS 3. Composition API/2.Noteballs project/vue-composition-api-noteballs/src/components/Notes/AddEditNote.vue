@@ -5,6 +5,7 @@
       <div class="control">
         <textarea
           v-model.trim="noteModel"
+          v-autofocus
           class="textarea"
           :placeholder="placeholder"
           ref="textareaRef" />
@@ -23,6 +24,7 @@
 // imports
 
 import { ref } from 'vue';
+import { vAutofocus } from '@/directives/vAutofocus'
 
 // refs
 
@@ -30,7 +32,7 @@ const textareaRef = ref(null);
 
 // defineModel() -> This substitutes defineProps() and defineEmits
 
-const noteModel = defineModel({type: String});
+const noteModel = defineModel({ type: String });
 
 // props
 
@@ -57,4 +59,6 @@ const focusTextArea = () => {
 defineExpose({
   focusTextArea,
 });
+
+
 </script>

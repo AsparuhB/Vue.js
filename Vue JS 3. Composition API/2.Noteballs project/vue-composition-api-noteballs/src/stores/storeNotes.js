@@ -1,5 +1,4 @@
 // stores/counter.js
-import { forEach } from 'lodash';
 import { defineStore } from 'pinia';
 
 export const useStoreNotes = defineStore('storeNotes', {
