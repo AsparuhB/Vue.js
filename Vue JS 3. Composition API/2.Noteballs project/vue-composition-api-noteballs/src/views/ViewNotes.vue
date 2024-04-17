@@ -1,6 +1,9 @@
 <template>
   <div class="notes">
-    <AddEditNote v-model="newNote" ref="addEditNoteRef" placeholder="Add a new note">
+    <AddEditNote
+      v-model="newNote"
+      ref="addEditNoteRef"
+      placeholder="Add a new note">
       <template #buttons>
         <button
           @click="addNewNote"
@@ -16,11 +19,11 @@
 
 <script setup>
 //imports
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import Note from '@/components/Notes/Note.vue';
 import AddEditNote from '@/components/Notes/AddEditNote.vue';
-import { useStoreNotes } from '@/stores/storeNotes'
-
+import { useWatchCharacters } from '@/use/useWatchCharacters';
+import { useStoreNotes } from '@/stores/storeNotes';
 
 // store //
 
@@ -38,11 +41,7 @@ const addNewNote = () => {
   addEditNoteRef.value.focusTextArea();
 };
 
-// watch characters
+// watch characters 
 
-watch(newNote, (newValue) => {
- if (newValue.length >= 100) {
-  confirm('Only 100 characters, gosh darnit!')
- }
-})
+useWatchCharacters(newNote)
 </script>
