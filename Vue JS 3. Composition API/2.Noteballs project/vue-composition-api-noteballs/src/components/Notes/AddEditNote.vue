@@ -7,6 +7,7 @@
           v-model.trim="noteModel"
           v-autofocus
           class="textarea"
+          maxlength="100"
           :placeholder="placeholder"
           ref="textareaRef" />
       </div>
