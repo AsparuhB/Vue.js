@@ -59,9 +59,8 @@ const showMobileNav = ref(false);
 const navbarMenuRef = ref(null);
 
 onClickOutside(navigator, () => {
-  showMobileNav.value = false
-})
-
+  showMobileNav.value = false;
+});
 </script>
 
 <style>

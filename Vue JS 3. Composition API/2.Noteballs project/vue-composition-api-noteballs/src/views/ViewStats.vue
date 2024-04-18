@@ -18,14 +18,19 @@
         </tr>
       </tbody>
     </table>
-    <input v-model="loveNoteBalls" v-autofocus class="input" type="text" placeholder="Do you love noteballs? Yes, no ? Yes." />
+    <input
+      v-model="loveNoteBalls"
+      v-autofocus
+      class="input"
+      type="text"
+      placeholder="Do you love noteballs? Yes, no ? Yes." />
   </div>
 </template>
 
 <script setup>
 //imports
 
-import { vAutofocus } from '@/directives/vAutofocus'
+import { vAutofocus } from '@/directives/vAutofocus';
 import { useStoreNotes } from '@/stores/storeNotes';
 import { useWatchCharacters } from '@/use/useWatchCharacters';
 import { ref } from 'vue';
@@ -36,12 +41,9 @@ const storeNotes = useStoreNotes();
 
 // love Noteballs
 
-const loveNoteBalls = ref('')
+const loveNoteBalls = ref('');
 
-// watch characters 
+// watch characters
 
-
-
-useWatchCharacters(loveNoteBalls, 50)
-
+useWatchCharacters(loveNoteBalls, 50);
 </script>
