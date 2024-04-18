@@ -60,11 +60,16 @@ const showMobileNav = ref(false);
 const navbarMenuRef = ref(null);
 const navbarBurgerRef = ref(null);
 
-onClickOutside(navbarMenuRef, () => {
-  showMobileNav.value = false;
-}, {
-  ignore: [navbarBurgerRef]
-});
+onClickOutside(
+  navbarMenuRef,
+  () => {
+    showMobileNav.value = false;
+  },
+  {
+    ignore: [navbarBurgerRef],
+  }
+);
+
 </script>
 
 <style>
