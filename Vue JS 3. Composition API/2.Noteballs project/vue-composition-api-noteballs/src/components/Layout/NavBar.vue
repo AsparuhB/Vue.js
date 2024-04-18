@@ -11,6 +11,7 @@
           :class="{ 'is-active': showMobileNav }"
           aria-label="menu"
           aria-expanded="false"
+          ref="navbarBurgerRef"
           data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -57,9 +58,12 @@ const showMobileNav = ref(false);
 
 // click outside to close the navbar
 const navbarMenuRef = ref(null);
+const navbarBurgerRef = ref(null);
 
-onClickOutside(navigator, () => {
+onClickOutside(navbarMenuRef, () => {
   showMobileNav.value = false;
+}, {
+  ignore: [navbarBurgerRef]
 });
 </script>
 
