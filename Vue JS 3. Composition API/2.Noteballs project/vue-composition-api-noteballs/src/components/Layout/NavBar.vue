@@ -22,6 +22,7 @@
       <div
         id="navbarBasicExample"
         class="navbar-menu"
+        ref="navbarMenuRef"
         :class="{ 'is-active': showMobileNav }">
         <div class="navbar-end">
           <RouterLink
@@ -48,9 +49,19 @@
 //imports
 
 import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+
 // mobile nav
 
 const showMobileNav = ref(false);
+
+// click outside to close the navbar
+const navbarMenuRef = ref(null);
+
+onClickOutside(navigator, () => {
+  showMobileNav.value = false
+})
+
 </script>
 
 <style>
